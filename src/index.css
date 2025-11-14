@@ -71,7 +71,7 @@
     }
 
     & ul li p {
-      @apply fancy-text mt-[22px] text-nowrap;
+      @apply fancy-num mt-[22px] text-nowrap;
     }
 
     & ul li img {
@@ -151,6 +151,13 @@
 @utility fancy-text { 
   margin-top: -50px;
   font-size: 60px;
+  font-family: "Bebas Neue", sans-serif;
+}
+ 
+
+@utility fancy-num { 
+  -webkit-text-stroke: 5px rgba(206, 206, 251, 0.5);
+  font-size: 150px;
   font-family: "Bebas Neue", sans-serif;
 }
 
