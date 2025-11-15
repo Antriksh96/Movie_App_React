@@ -96,10 +96,10 @@
   }
 
   .all-movies {
-    @apply space-y-9;
+    @apply space-y-10 mt-10;
 
     & ul {
-      @apply grid grid-cols-1 gap-5 xs:grid-cols-2 md:grid-cols-3 lg:grid-cols-4;
+      @apply grid grid-cols-1 gap-7 xs:grid-cols-2 md:grid-cols-3 lg:grid-cols-4;
     }
   }
 
@@ -175,3 +175,10 @@
   width: 10%; 
   margin-right: 46%;
 } 
+
+.effect{
+  transition: all 0.4s ease;
+}
+.effect:hover{
+  transform: scale(1.1);
+}
