@@ -1,9 +1,11 @@
 import React from 'react'
+import { useNavigate } from 'react-router-dom'
 
-function Moviecard({image, title, rating, lang, year}) { 
+function Moviecard({data, image, title, rating, lang, year}) { 
+  const navigate = useNavigate()
 
   return (
-    <div className='movie-card effect'>
+    <div className='movie-card effect' onClick={() => {navigate('/moviepage', {state : data})}}>
         <img src={`https://image.tmdb.org/t/p/w500${image}`} />
         <h3>{title}</h3>
         <div className='content'>

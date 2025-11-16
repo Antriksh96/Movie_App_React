@@ -104,7 +104,7 @@ function App({searchterm, setSearchterm, setData}) {
             <div><span className='text-white absolute text-4xl translate-y-[-20px]'>All Movies</span></div>
             <ul>
               {
-                popularMovies ? popularMovies.results ? popularMovies.results.map((e) => <Moviecard key={e.id} image={e.backdrop_path} title={e.title} rating={e.vote_average} lang={e.original_language} year={e.release_date} />) : null : null
+                popularMovies ? popularMovies.results ? popularMovies.results.map((e) => <Moviecard key={e.id} data = {e} image={e.backdrop_path} title={e.title} rating={e.vote_average} lang={e.original_language} year={e.release_date} />) : null : null
               }
             </ul>
           </div>

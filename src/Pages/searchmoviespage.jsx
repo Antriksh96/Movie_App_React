@@ -8,10 +8,10 @@ function Searchmoviespage({ searchterm, data }) {
 
     return (
         <div className='all-movies'>
-            <div className='flex items-center justify-between mb-5'><span className='text-white absolute text-4xl m-10 relative'>Search Results for: {searchterm}</span> <span onClick={() => {navigate('/')}} className='text-white text-6xl relative mr-10 cursor-pointer'><i class="ri-arrow-left-circle-fill"></i></span></div>
+            <div className='flex items-center justify-between mb-5'><span className='text-white absolute text-4xl m-10 relative'>Search Results for: {searchterm}</span> <span onClick={() => {navigate('/')}} className='text-white text-6xl relative mr-10 cursor-pointer'><i className='clreffect' class="ri-arrow-left-circle-fill"></i></span></div>
             <ul>
                 {
-                    data ? data.results ? data.results.map((e) => <Moviecard key={e.id} image={e.backdrop_path ? e.backdrop_path : e.poster_pathe } title={e.title} rating={e.vote_average} lang={e.original_language} year={e.release_date} />) : null : null
+                    data ? data.results ? data.results.map((e) => <Moviecard key={e.id} data = {e} image={e.backdrop_path ? e.backdrop_path : e.poster_pathe } title={e.title} rating={e.vote_average} lang={e.original_language} year={e.release_date} />) : null : null
                 }
             </ul>
 

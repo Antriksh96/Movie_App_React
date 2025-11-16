@@ -161,6 +161,10 @@
   font-family: "Bebas Neue", sans-serif;
 }
 
+@utility fancy-all{  
+  font-family: "Bebas Neue", sans-serif;
+}
+
 @utility hide-scrollbar {
   -ms-overflow-style: none;
   scrollbar-width: none;
@@ -181,4 +185,13 @@
 }
 .effect:hover{
   transform: scale(1.1);
+}
+
+.clreffect{
+  background-color: white;
+  transition: all 0.4s ease;
+}
+
+.clreffect:hover{
+   @apply bg-purple-500;
 }
