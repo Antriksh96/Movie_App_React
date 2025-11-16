@@ -187,7 +187,7 @@ function Moviepage() {
                 <div className="mt-10 flex flex-col md:flex-row items-center justify-between gap-6 border-t border-gray-800 pt-6">
                     {/* Left GitHub Logo Only */}
                     <a
-                        href="https://github.com"
+                        href="https://github.com/Antriksh96"
                         className="flex items-center gap-2 hover:text-purple-500 transition"
                     >
                         {/* GitHub Logo */}
