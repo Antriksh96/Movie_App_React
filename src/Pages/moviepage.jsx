@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
+import Loading from "../components/Loading";
 // import Moviecard from "../components/Moviecard";
 function Moviepage() {
 
@@ -7,12 +8,14 @@ function Moviepage() {
     const { state } = useLocation(); // if you use useNavigate hook to render the compo on a path you can see a obj/val with it and you can use the value inside the compo that rendering on that path that you pass while using useNavigate the use vlaue that receive from usenaviagte can you use by using useLocation hook inside the compo that render on on that path usse in useNavigate.
     const navigate = useNavigate()
     const [moviedetails, setMoviedetails] = useState(null)
+    const [loading, setLoading] = useState(false)
 
-     
+
 
 
     useEffect(() => {                                      // only one time useeffect will run when you load this page if you go back and return or no of time you open same page this will not run.
         async function getMoviedetails() {
+            setLoading(true)
 
             const API_KEY = import.meta.env.VITE_TMDB_API_KEY;
 
@@ -28,6 +31,9 @@ function Moviepage() {
                 const response = await fetch(`https://api.themoviedb.org/3/movie/${state?.id}`, API_OPTION)
                 const data = await response.json()
                 setMoviedetails(data)
+                setTimeout(() => {
+                    setLoading(false)
+                }, 1000);
 
             } catch (error) {
                 console.log(error)
@@ -36,6 +42,14 @@ function Moviepage() {
         }
         getMoviedetails();
     }, [state])
+
+    if (loading) {
+            return (
+                <div className="flex justify-center items-center h-screen bg-black">
+                    <Loading />
+                </div>
+            );
+        }
 
     return (
         <div className="fancy-all w-full h-screen z-0 sans-serif bg-[#000000]">
@@ -67,13 +81,15 @@ function Moviepage() {
                 <div className="relative z-10 h-full items-center pl-20 max-w-2xl text-white">
                     <div>
                         {/* Title */}
-                        <h1 className="text-6xl font-bold mb-4 ml-[-3vw]">{moviedetails?.title}</h1>
-                        <h3 className="text-2xl font-bold mb-4">{moviedetails?.tagline}</h3>
+                        <div>
+                            <h1 className="text-6xl font-bold mb-4 relative float-left">{moviedetails?.title}</h1>
+                            <h3 className="text-2xl font-bold mb-4 float-left">{moviedetails?.tagline}</h3>
+                        </div>
 
                         {/* <h3>{moviedetails.tagline}</h3> */}
 
                         {/* Rating Row */}
-                        <div className="flex items-center gap-4 text-lg text-gray-300 mb-4">
+                        <div className="flex items-center gap-4 text-lg text-gray-300 mb-4 float-left">
                             <div className=" flex text-purple-500 text-xl">★ ★ ★ ★ ☆</div>
                             <span>{moviedetails?.vote_average?.toFixed(1)}</span>
                             <span>• {moviedetails?.vote_count} Reviews</span>
@@ -82,13 +98,13 @@ function Moviepage() {
                         </div>
 
                         {/* Description */}
-                        <p className="text-gray-300 text-lg leading-relaxed mb-8">
+                        <p className="text-gray-300 text-lg leading-relaxed mb-8 float-left">
                             {moviedetails?.overview}
                         </p>
 
                         {/* Trailer Button */}
-                        <button onClick={() => { navigate('/player', { state: state?.id }) }} className="flex items-center gap-3 cursor-pointer text-xl hover:opacity-80">
-                            <i className="clreffect" class="ri-play-large-line"></i>
+                        <button onClick={() => { navigate('/player', { state: state?.id }) }} className="float-left flex items-center gap-3 cursor-pointer text-xl hover:opacity-80">
+                            <i className="clreffect float-left" class="ri-play-large-line"></i>
                             Watch Trailer
                         </button>
                     </div>

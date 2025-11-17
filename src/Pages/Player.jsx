@@ -43,7 +43,9 @@ function Player() {
             } catch (error) {
                 console.log(error);
             } finally {
-                setLoading(false);  // ALWAYS STOPS LOADER
+                 setTimeout(() => {
+                    setLoading(false);
+                 }, 1000);  // ALWAYS STOPS LOADER
             }
         }
 
@@ -52,10 +54,13 @@ function Player() {
 
 
     if (loading) {
-        return <div className="flex justify-center items-center h-screen bg-black">
-            <Loading />
-        </div>
+        return (
+            <div className="flex justify-center items-center h-screen bg-black">
+                <Loading />
+            </div>
+        );
     }
+
 
     return (
         <div className='h-screen w-screen bg-[#212121] text-white'>
