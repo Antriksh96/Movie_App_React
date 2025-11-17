@@ -187,11 +187,8 @@
   transform: scale(1.1);
 }
 
-.clreffect{
-  background-color: white;
-  transition: all 0.4s ease;
-}
 
-.clreffect:hover{
-   @apply bg-purple-500;
+.clreffect {
+  @apply bg-white transition-all duration-400 ease-in-out hover:bg-purple-500;
 }
+ 
