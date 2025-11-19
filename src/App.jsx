@@ -1,119 +1,42 @@
-import { meta } from '@eslint/js'
-import { use } from 'react';
-import { useEffect, useState } from 'react' 
-import Moviecard from './components/Moviecard';
-import { getSearchtermmovies } from './Pages/searchmoviespage';
-import { useNavigate } from 'react-router-dom';
+import React, { useEffect } from 'react'
+import { useState } from 'react'
+import { useNavigate, Route, Routes } from 'react-router-dom'
+import Mainpage from './mainpage'
+import ScrollToTop from './components/ScrollToTop'
+import Searchmoviespage from './Pages/Searchmoviespage'
+import Moviepage from './Pages/moviepage'
+import Player from './Pages/Player'
+import Loginpage from './Pages/Loginpage'
+import { onAuthStateChanged } from 'firebase/auth'
+import { auth } from './firebase'
 
+function App() {
+  const [searchterm, setSearchterm] = useState('');
+  const [data, setData] = useState(null); 
+  const navigate = useNavigate();
 
-function App({searchterm, setSearchterm, setData}) {
-
-   
-  const [trendingMovies, setTrendingMovies] = useState(null);
-  const [popularMovies, setPopularMovies] = useState(null)
-  const navigate = useNavigate();                                    //always use useNavigate hook at top of component like we define state and use naviaget wherever you want.
-
-  const API_KEY = import.meta.env.VITE_TMDB_API_KEY;
-
-  const API_OPTION = {
-    method: "GET",
-    headers: {
-      accept: "application/json",
-      Authorization: `Bearer ${API_KEY}`,
-    },
-  };
-
-
-  useEffect(() => {
-
-    async function getTrendingMovies() {
-      try {
-        const response = await fetch(`https://api.themoviedb.org/3/trending/movie/day?language=en-US`, API_OPTION)
-        const jsondata = await response.json();
-        // console.log(jsondata)
-        setTrendingMovies(jsondata)
-
-      } catch (error) {
-        console.log(error)
-
+   useEffect(() => {
+    onAuthStateChanged(auth, async (user) => {
+      if(user){
+        navigate('/')
       }
-    }
-    getTrendingMovies();
-  }, [])
-
-
-  useEffect(() => {
-
-    async function getPopularMovies() {
-      try {
-        const response = await fetch(`https://api.themoviedb.org/3/movie/popular?language=en-US&page=1`, API_OPTION)
-        const jsondata = await response.json();
-        // console.log(jsondata)
-        setPopularMovies(jsondata)
-
-      } catch (error) {
-        console.log(error)
-
+      else{
+        navigate('/loginpage')
       }
-    }
-    getPopularMovies();
-  }, [])
-
-
-
-
-  function fetchenter(e) {         //As user press enter button after typing any movie name in search input the fun call the fun that fetch data from api.
-    console.log(e.key)
-     
-    if (e.key == 'Enter') { 
-       
-      getSearchtermmovies(searchterm).then((res) => setData(res)).catch((error) => console.log(error)) 
-      navigate('/searchresult')
-    } 
-  }
-
-
+    })
+   },[])
 
   return (
-    <main>
-      <div className='pattern'>     {/* here i learn pattern is a class name that is utility class define in index.css file have tailwind style so that it become reusable style. */}
-        <div className='wrapper'>
-          <header>
-            <img className='logo' src="logo.png" alt="" />
-            <img src="/hero-img.png" alt="" />
-            <h1 className='fancy-text'>Find <span className='text-gradient'>Movies</span> You’ll Love Without the Hassle</h1>
-          </header>
-          <div className='search'>
-            <div>
-              <img src="search.png" alt="" />
-              <input value={searchterm} type="text" placeholder='Search through 300+ movies online' onKeyDown={(e) => { fetchenter(e) }} onChange={(e) => { setSearchterm(e.target.value) }} />
-            </div>
-          </div>
-          <div className='trending'>
-            <div><span className='text-white absolute text-4xl translate-y-[-60px]'>Trending</span></div>
-            <div>
-              <ul>
-                {
-                  trendingMovies ? trendingMovies.results ? trendingMovies.results.map((e, index) => <li className='effect' key={e.id}> <p>{index + 1}</p> <img src={`https://image.tmdb.org/t/p/w500${e.backdrop_path}`} /> </li>) : null : null
-                }
-              </ul>
-            </div>
-          </div>
-          {/* All movie cards */}
-          <div className='all-movies'>
-            <div><span className='text-white absolute text-4xl translate-y-[-20px]'>All Movies</span></div>
-            <ul>
-              {
-                popularMovies ? popularMovies.results ? popularMovies.results.map((e) => <Moviecard key={e.id} data = {e} image={e.backdrop_path} title={e.title} rating={e.vote_average} lang={e.original_language} year={e.release_date} />) : null : null
-              }
-            </ul>
-          </div>
-        </div>
-      </div>
- 
-    </main> 
-    
-  )
+    <>
+      <ScrollToTop />
+      <Routes>
+        <Route path='/' element={<Mainpage searchterm={searchterm} setSearchterm={setSearchterm} setData={setData} />} />
+        <Route path='/searchresult' element={<Searchmoviespage searchterm={searchterm} data={data} />} />
+        <Route path='/moviepage' element={<Moviepage />} />
+        <Route path='/player' element={<Player />} />
+        <Route path='/loginpage' element={<Loginpage />} />
+      </Routes>
+    </>
+  );
 }
-
 export default App

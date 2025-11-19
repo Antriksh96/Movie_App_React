@@ -56,7 +56,7 @@ function Moviepage() {
             <div className="relative w-full h-[520px] overflow-hidden">
                 {/* Background image full width */}
                 <div
-                    className="absolute inset-0 bg-cover bg-right"
+                    className="absolute inset-0 bg-no-repeat bg-cover bg-center"
                     style={{
                         backgroundImage: `url(https://image.tmdb.org/t/p/original${moviedetails?.backdrop_path})`,
                     }}
@@ -71,7 +71,7 @@ function Moviepage() {
   to-60%">
                 </div>
 
-                <div onClick={() => { navigate('/') }} className='text-white m-4 text-6xl relative mr-10 cursor-pointer'>
+                <div onClick={() => { navigate('/') }} className='text-white m-4 text-4xl relative mr-10 cursor-pointer lg:text-6xl'>
                     <i class="ri-arrow-left-circle-fill"></i>
                 </div>
 
@@ -79,18 +79,18 @@ function Moviepage() {
                 {/* CONTENT AREA */}
 
                 <div className="relative z-10 h-full items-center pl-20 max-w-2xl text-white">
-                    <div>
+                    <div className="ml-[-15vw] lg:ml-[+1vw]">
                         {/* Title */}
                         <div>
-                            <h1 className="text-6xl font-bold mb-4 relative float-left">{moviedetails?.title}</h1>
-                            <h3 className="text-2xl font-bold mb-4 float-left">{moviedetails?.tagline}</h3>
+                            <h1 className="text-4xl lg:text-6xl font-bold mb-2 lg:mb-5 relative float-left">{moviedetails?.title}</h1>
+                            <h3 className="text-xl lg:text-2xl font-bold mb-4 lg:mb-3 float-left">{moviedetails?.tagline}</h3>
                         </div>
 
                         {/* <h3>{moviedetails.tagline}</h3> */}
 
                         {/* Rating Row */}
-                        <div className="flex items-center gap-4 text-lg text-gray-300 mb-4 float-left">
-                            <div className=" flex text-purple-500 text-xl">★ ★ ★ ★ ☆</div>
+                        <div className="flex items-center gap-4 lg:text-lg text-[0.8rem] text-gray-300 mb-4 float-left">
+                            <div className=" flex text-purple-500 w-[28vw] lg:w-auto text-[0.8rem] lg:text-xl">★ ★ ★ ★ ☆</div>
                             <span>{moviedetails?.vote_average?.toFixed(1)}</span>
                             <span>• {moviedetails?.vote_count} Reviews</span>
                             <span>• {moviedetails?.release_date?.slice(0, 4)}</span>
@@ -98,7 +98,7 @@ function Moviepage() {
                         </div>
 
                         {/* Description */}
-                        <p className="text-gray-300 text-lg leading-relaxed mb-8 float-left">
+                        <p className="text-gray-300 lg:text-lg text-[1rem] leading-relaxed mb-8 float-left">
                             {moviedetails?.overview}
                         </p>
 
@@ -122,9 +122,9 @@ function Moviepage() {
                 </div>
 
                 {/* ----------- CONTENT SECTION ----------- */}
-                <div className="mt-10 flex gap-10">
+                <div className="mt-10 flex flex-col lg:flex-row gap-10">
                     {/* LEFT SIDE → MOVIE CARD */}
-                    <div className="w-[350px]">
+                    <div className="w-[280px] lg:w-[300px] ml-[-5vw] lg:ml-[+2vw]">
                         {/* <MovieCard /> */}
                         <img
                             src={`https://image.tmdb.org/t/p/w500${moviedetails?.poster_path}`}
@@ -134,13 +134,13 @@ function Moviepage() {
 
                     {/* RIGHT SIDE → DETAILS */}
                     <div className="flex flex-col gap-7 max-w-3xl">
-                        <h1 className="text-4xl ml-[-0.5vw] font-bold">Storyline</h1>
+                        <h1 className="lg:text-4xl text-3xl lg:ml-[-0.5vw] font-bold">Storyline</h1>
 
-                        <p className="text-lg leading-relaxed text-gray-300">
+                        <p className="lg:text-lg leading-relaxed text-gray-300">
                             {state?.overview}
                         </p>
 
-                        <div className="fancy-all grid grid-cols-2 gap-y-5 text-lg">
+                        <div className="fancy-all grid grid-cols-2 gap-y-5 text-sm lg:text-lg gap-2 lg:gap-4">
                             <p>
                                 <span className="fancy-all">Released: </span>
                                 {state?.release_date}
@@ -174,7 +174,7 @@ function Moviepage() {
 
                         <div className="fancy-all">
                             <p className="font-semibold">Production:</p>
-                            <p className="text-gray-300 text-[18px]">
+                            <p className="text-gray-300 lg:text-[18px]">
                                 {moviedetails?.production_companies[0]?.name}, {moviedetails?.production_companies[1]?.name}, {moviedetails?.production_companies[2]?.name}, {moviedetails?.production_companies[3]?.name}, {moviedetails?.production_companies[4]?.name}
                             </p>
                         </div>
@@ -186,13 +186,13 @@ function Moviepage() {
             <footer className="w-full bg-[#111] text-gray-300 py-12 px-6 md:px-16 border-t border-gray-800">
                 {/* Top Section */}
                 <div>
-                    <h1 className="text-3xl font-semibold mb-6 relative right-[39vw]">
+                    <h1 className="text-3xl font-semibold mb-6 relative lg:right-[39vw]">
                         <span className="text-purple-500">React Movies</span>
                     </h1>
 
                     {/* React + TMDB */}
                     <div className="space-y-4">
-                        <p className="flex items-center gap-3">
+                        <p className="flex items-center gap-3 ml-[12vw] lg:ml-[0vw]">
                             Made with
                             {/* React Logo */}
                             <span className="w-10 h-10">
@@ -226,7 +226,7 @@ function Moviepage() {
                         </p>
 
 
-                        <p className="text-sm text-gray-400">
+                        <p className="text-sm text-center lg:text-left text-gray-400">
                             This project uses the TMDB API but is not endorsed or certified by TMDB.
                         </p>
                     </div>
