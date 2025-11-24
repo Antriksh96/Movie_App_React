@@ -80,7 +80,7 @@ function Mainpage({ searchterm, setSearchterm, setData }) {
                 <div className='wrapper'>
                     <header>
                         
-                        <button onClick={() => {logout()}} aria-label="Logout" className="relative inline-flex items-center justify-center p-0.5 overflow-hidden text-sm font-medium text-heading rounded-base group bg-gradient-to-br from-cyan-500 to-blue-500 group-hover:from-cyan-500 group-hover:to-blue-500 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-cyan-200 dark:focus:ring-cyan-800">
+                        <button onClick={() => {logout()}} aria-label="Logout" className="flex items-center lg:px-4 lg:py-3 p-1.5 text-sm bg-white text-purple-500 font-semibold rounded-xl shadow hover:bg-gray-100 transition-all absolute lg:right-[-5vw] top-4">
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"
                                 width="24"
@@ -125,7 +125,7 @@ function Mainpage({ searchterm, setSearchterm, setData }) {
                         <div><span className='text-white absolute text-4xl translate-y-[-20px]'>All Movies</span></div>
                         <ul>
                             {
-                                popularMovies ? popularMovies.results ? popularMovies.results.map((e) => <Moviecard key={e.id} data={e} image={e.backdrop_path} title={e.title} rating={e.vote_average} lang={e.original_language} year={e.release_date} />) : null : null
+                                popularMovies ? popularMovies.results ? popularMovies.results.map((e) => <Moviecard key={e.id} data={e} image={e.backdrop_path ? e.backdrop_path : "https://via.placeholder.com/150?text=No+Image"} title={e.title} rating={e.vote_average} lang={e.original_language} year={e.release_date} />) : null : null
                             }
                         </ul>
                     </div>

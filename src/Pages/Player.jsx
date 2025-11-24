@@ -64,7 +64,7 @@ function Player() {
 
     return (
         <div className='h-screen w-screen bg-[#212121] text-white'>
-            <div onClick={() => { navigate('/moviepage', { state: movieData }) }} className='text-[3rem] absolute left-6 top-5'>
+            <div onClick={() => { navigate('/moviepage', { state: movieData }) }} className='text-[3rem] absolute left-6 top-5 cursor-pointer'>
                 <i class="ri-arrow-left-circle-fill"></i>
             </div>
             <iframe width='100%' height='100%' title='trailer' src={`https://www.youtube.com/embed/${movieDatakey}`} frameBorder="0"></iframe>

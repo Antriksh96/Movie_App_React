@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import Loading from "../components/Loading";
+import CastCard from "../components/Castcompo";
 // import Moviecard from "../components/Moviecard";
 function Moviepage() {
 
@@ -8,6 +9,7 @@ function Moviepage() {
     const { state } = useLocation(); // if you use useNavigate hook to render the compo on a path you can see a obj/val with it and you can use the value inside the compo that rendering on that path that you pass while using useNavigate the use vlaue that receive from usenaviagte can you use by using useLocation hook inside the compo that render on on that path usse in useNavigate.
     const navigate = useNavigate()
     const [moviedetails, setMoviedetails] = useState(null)
+    const [castdetails, setCastdetails] = useState(null)
     const [loading, setLoading] = useState(false)
 
 
@@ -28,9 +30,13 @@ function Moviepage() {
             };
 
             try {
-                const response = await fetch(`https://api.themoviedb.org/3/movie/${state?.id}`, API_OPTION)
+                const response = await fetch(`https://api.themoviedb.org/3/movie/${state?.id}`, API_OPTION)           // Api with end point to call that particular movie using the id of that movie.
                 const data = await response.json()
+                const response2 = await fetch(`https://api.themoviedb.org/3/movie/${state?.id}/credits`, API_OPTION)
+                const data2 = await response2.json()
+                console.log(data2)
                 setMoviedetails(data)
+                setCastdetails(data2)
                 setTimeout(() => {
                     setLoading(false)
                 }, 1000);
@@ -44,12 +50,12 @@ function Moviepage() {
     }, [state])
 
     if (loading) {
-            return (
-                <div className="flex justify-center items-center h-screen bg-black">
-                    <Loading />
-                </div>
-            );
-        }
+        return (
+            <div className="flex justify-center items-center h-screen bg-black">
+                <Loading />
+            </div>
+        );
+    }
 
     return (
         <div className="fancy-all w-full h-screen z-0 sans-serif bg-[#000000]">
@@ -182,12 +188,29 @@ function Moviepage() {
                 </div>
             </div>
 
+            {/* Cast Section */}
+
+            <div className="fancy-all w-full flex flex-col text-white px-10 py-10">
+                {/* ----------- TOP NAV (ONLY OVERVIEW) ----------- */}
+                <h2 className="text-white text-xl md:text-2xl font-semibold mb-6 border-b border-gray-700 pb-3">
+                    Top Cast
+                </h2>
+                <div className="flex gap-16 overflow-x-auto scrollbar-hide p-4">
+
+                    {
+                        castdetails ? castdetails.cast ? castdetails.cast.map((singlecast) => <CastCard key={singlecast?.id} img={singlecast?.profile_path} name={singlecast?.name} character={singlecast?.character} />) : null : null
+                    }
+
+                </div>
+
+            </div>
+
             {/* footer st */}
             <footer className="w-full bg-[#111] text-gray-300 py-12 px-6 md:px-16 border-t border-gray-800">
                 {/* Top Section */}
                 <div>
-                    <h1 className="text-3xl font-semibold mb-6 relative lg:right-[39vw]">
-                        <span className="text-purple-500">React Movies</span>
+                    <h1 className="text-3xl font-semibold mb-6 relative lg:right-[40vw]">
+                        <span className="text-purple-500">REACTFLIX</span>
                     </h1>
 
                     {/* React + TMDB */}
@@ -254,12 +277,6 @@ function Moviepage() {
                         <span className="text-white font-medium">GitHub</span>
                     </a>
 
-                    {/* Language Selector */}
-                    <select className="bg-transparent border border-gray-700 px-4 py-2 rounded-lg hover:border-purple-500 transition">
-                        <option className="text-black">Deutsch</option>
-                        <option className="text-black">English</option>
-                        <option className="text-black">Hindi</option>
-                    </select>
                 </div>
             </footer>
         </div>
