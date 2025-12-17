@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import Moviecard from '../components/Moviecard';
 import { useNavigate } from 'react-router-dom';
 
-function Searchmoviespage({ searchterm, data }) {
+function Searchmoviespage({ searchterm, data }) {    //que why i did'nt make [data,setdata] state here why i make in app because i reuried data in searchpage compo and setData fun in below api fun i cant acces that state changing fun in below if i make in searchpage compo so i put that state and state changing fun both in parent component.
     const navigate = useNavigate()
     console.log(data) 
 

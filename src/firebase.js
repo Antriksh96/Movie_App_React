@@ -1,10 +1,11 @@
 // Import the functions you need from the SDKs you need
-import { initializeApp } from "firebase/app";
+import { initializeApp } from "firebase/app"; 
 import {
   createUserWithEmailAndPassword,
   getAuth,
   signInWithEmailAndPassword,
   signOut,
+  sendPasswordResetEmail
 } from "firebase/auth";
 import { addDoc, collection, getFirestore } from "firebase/firestore";
 // import { useNavigate } from "react-router-dom";
@@ -51,9 +52,22 @@ async function login(email, password) {
     alert(error.message);
   }
 }
+async function ResetEmail(email) {
+  try {
+    await sendPasswordResetEmail(auth, email, {
+      url: "http://localhost:5173/Newpasspage",
+    });
+    alert("Reset Password email link is sent");
+  } catch (err) {
+    alert(err.message);
+  }
+}
 
-async function logout() {
+
+// let navigate = useNavigate()
+
+async function logout() { 
   signOut(auth);
 }
 
-export { auth, db, signup, login, logout };
+export { auth, db, signup, login, logout, ResetEmail };

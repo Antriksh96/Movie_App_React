@@ -15,7 +15,7 @@ function Moviepage() {
 
 
 
-    useEffect(() => {                                      // only one time useeffect will run when you load this page if you go back and return or no of time you open same page this will not run.
+    useEffect(() => {                                      // only one time useeffect will run when you load this page if you go back and return or no of time you open same page this will not run.  WHY  ? see below line in front of dependency of this useeffect.
         async function getMoviedetails() {
             setLoading(true)
 
@@ -47,7 +47,7 @@ function Moviepage() {
             }
         }
         getMoviedetails();
-    }, [state])
+    }, [state]) //here i give dependency due to which if i go back or go forward by using browser button this effect call many time due to which api call many time to avoid that i put state means movie id as dependency so if i switch page many time without click on another movie means state = movie id is same then api dosnt call till the id of movie means state get change it only change when i click on other movie card.
 
     if (loading) {
         return (
@@ -85,10 +85,10 @@ function Moviepage() {
                 {/* CONTENT AREA */}
 
                 <div className="relative z-10 h-full items-center pl-20 max-w-2xl text-white">
-                    <div className="ml-[-15vw] lg:ml-[+1vw]">
+                    <div className="ml-[-15vw] lg:ml-[+1vw] mt-[-2vh] w-[40vw]">
                         {/* Title */}
                         <div>
-                            <h1 className="text-4xl lg:text-6xl font-bold mb-2 lg:mb-5 relative float-left">{moviedetails?.title}</h1>
+                            <h1 className="text-4xl lg:text-6xl font-bold mb-2 lg:mb-5 relative float-left ">{moviedetails?.title}</h1>
                             <h3 className="text-xl lg:text-2xl font-bold mb-4 lg:mb-3 float-left">{moviedetails?.tagline}</h3>
                         </div>
 
@@ -166,7 +166,7 @@ function Moviepage() {
                                 <span className="fancy-all">Revenue:</span> ${moviedetails?.revenue}
                             </p>
                             <p>
-                                <span className="fancy-all">Language:</span> {moviedetails?.spoken_languages[0].english_name}
+                                <span className="fancy-all">Language:</span> {moviedetails?.spoken_languages[0]?.english_name}
                             </p>
 
                             <p>

@@ -33,6 +33,7 @@ function Player() {
 
                 const data = await response.json();
                 setMovieData(data);
+                console.log(data)
 
                 const trailer = data.results
                     .filter(v => v.site === "YouTube" && v.type === "Trailer" && v.official)
@@ -40,6 +41,7 @@ function Player() {
 
                 const youtubeKey = trailer?.key;
                 setMovieDatakey(youtubeKey);
+                console.log(youtubeKey)
             } catch (error) {
                 console.log(error);
             } finally {
@@ -72,4 +74,4 @@ function Player() {
     )
 }
 
-export default Player
+export default Player 

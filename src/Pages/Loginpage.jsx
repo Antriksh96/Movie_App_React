@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { signup, login } from '../firebase'
+import { useNavigate } from 'react-router-dom'
 
 
 function Loginpage() {
@@ -9,19 +10,17 @@ function Loginpage() {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
 
+    let navigate = useNavigate()
+
     const user_auth = (event) => {
 
-        event.preventDefault();
-        console.log("user_auth fun called")
-        console.log(signState)
+        event.preventDefault(); 
 
-        if (signState === 'sign-in') {
-            console.log("calling signin fun")
+        if (signState === 'sign-in') { 
             login(email, password)
 
         }
-        else {
-            console.log("calling signup fun")
+        else { 
             signup(name, email, password);
         }
     }
@@ -88,7 +87,7 @@ function Loginpage() {
                             Remember me
                         </label>
 
-                        <a href="#" className="text-sm hover:text-indigo-400">
+                        <a href="#" className="text-sm hover:text-indigo-400" onClick={() => (navigate('/Resetemail'))}>
                             Forgot Password?
                         </a>
                     </div>
