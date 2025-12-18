@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from "react";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useLocation, useNavigate, Link } from "react-router-dom";
 import Loading from "../components/Loading";
 import CastCard from "../components/Castcompo";
 // import Moviecard from "../components/Moviecard";
+import { FaGithub, FaLinkedin } from 'react-icons/fa' //This is a way to use icon by using react icon library also remen=mber to write /fa 
+import { FaTwitter } from "react-icons/fa";
 function Moviepage() {
 
 
@@ -256,26 +258,21 @@ function Moviepage() {
                 </div>
 
                 {/* Bottom Section */}
-                <div className="mt-10 flex flex-col md:flex-row items-center justify-between gap-6 border-t border-gray-800 pt-6">
+                <div className="mt-10 flex flex-col md:flex-row items-center justify-between gap-6 border-t border-gray-800 pt-6 w-28">
                     {/* Left GitHub Logo Only */}
-                    <a
-                        href="https://github.com/Antriksh96"
-                        className="flex items-center gap-2 hover:text-purple-500 transition"
-                    >
-                        {/* GitHub Logo */}
-                        <svg
-                            className="w-6 h-6"
-                            fill="currentColor"
-                            viewBox="0 0 24 24"
-                        >
-                            <path
-                                fillRule="evenodd"
-                                d="M12 0C5.37 0 0 5.37 0 12a12 12 0 0 0 8.21 11.44c.6.11.82-.26.82-.58v-2.02c-3.34.73-4.04-1.61-4.04-1.61-.55-1.39-1.34-1.76-1.34-1.76-1.1-.76.08-.75.08-.75 1.21.09 1.85 1.25 1.85 1.25 1.08 1.85 2.83 1.32 3.52 1.01.11-.78.42-1.32.76-1.62-2.67-.3-5.47-1.34-5.47-5.97 0-1.32.47-2.39 1.24-3.23-.13-.3-.54-1.52.12-3.18 0 0 1.01-.32 3.3 1.23a11.4 11.4 0 0 1 6 0c2.28-1.55 3.29-1.23 3.29-1.23.67 1.66.26 2.88.13 3.18a4.6 4.6 0 0 1 1.23 3.23c0 4.64-2.81 5.66-5.49 5.96.43.38.82 1.12.82 2.26v3.35c0 .32.22.7.82.58A12 12 0 0 0 24 12c0-6.63-5.37-12-12-12Z"
-                            />
-                        </svg>
 
-                        <span className="text-white font-medium">GitHub</span>
-                    </a>
+
+                    <div className="flex flex-col items-center">
+                        <Link to={"https://github.com/Antriksh96"} className="w-8 h-8 flex text-2xl items-center gap-2 hover:text-purple-500 transition"><FaGithub /></Link>    {/** another better way to add social link by replaceing use of anchor tag */} 
+                    </div>
+
+                    <div className="flex flex-col items-center">
+                        <Link to={"https://x.com/LakdeAntriksh"} className="w-6 h-6 text-2xl flex items-center gap-2 hover:text-purple-500 transition"><FaTwitter /></Link>    {/** another better way to add social link by replaceing use of anchor tag */} 
+                    </div>
+
+                    <div className="flex flex-col items-center">
+                        <Link to={"https://www.linkedin.com/in/antriksh-lakde-49644a312/"} className="w-6 h-6 text-2xl flex items-center gap-2 hover:text-purple-500 transition"><FaLinkedin /></Link>    {/** another better way to add social link by replaceing use of anchor tag */} 
+                    </div>
 
                 </div>
             </footer>
