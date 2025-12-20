@@ -2,8 +2,8 @@ import React, { useEffect } from 'react'
 import { useState } from 'react'
 import { useNavigate, Route, Routes, useSearchParams } from 'react-router-dom'
 import Mainpage from './mainpage'
-import ScrollToTop from './components/ScrollToTop'
-import Searchmoviespage from './Pages/Searchmoviespage'
+import ScrollToTop from './components/ScrollToTop' 
+import SearchMoviesPage from './Pages/SearchMoviesPage'
 import Moviepage from './Pages/moviepage'
 import Player from './Pages/Player'
 import Loginpage from './Pages/Loginpage'
@@ -40,7 +40,7 @@ function App() {
       <ScrollToTop />  {/*whenever any route activated means whenever we go to differenet page from one of the follwing route this scrollToTop component render and it make that page apper from top if we not put this then whever we go to other page the pager apper first it bottom section we need to scroll to see top.*/}
       <Routes>
         <Route path='/' element={<Mainpage searchterm={searchterm} setSearchterm={setSearchterm} setData={setData} />} />
-        <Route path='/searchresult' element={<Searchmoviespage searchterm={searchterm} data={data} />} />
+        <Route path='/searchresult' element={<SearchMoviesPage searchterm={searchterm} data={data} />} />
         <Route path='/moviepage' element={<Moviepage />} />
         <Route path='/player' element={<Player />} />
         <Route path='/loginpage' element={<Loginpage />} />

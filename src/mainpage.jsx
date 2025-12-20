@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import Moviecard from './components/Moviecard';
-import { getSearchtermmovies } from './Pages/Searchmoviespage';
+import { getSearchtermmovies } from './Pages/SearchMoviesPage';
 import { useNavigate } from 'react-router-dom';
 import { logout } from './firebase';
 
