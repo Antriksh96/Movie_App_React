@@ -27,7 +27,12 @@ The project also includes a **Forgot Password** feature, which is often missing 
 - **Home Page** – Movie sliders with animations  
 - **Movie Details Page** – Movie info, ratings, overview  
 - **Trailer Page** – Watch official trailers  
-- **Auth Pages** – Login, Signup, Forgot Password  
+- **Auth Pages** – Login, Signup, Forgot Password
+
+- 🖼️ Preview  
+![Home page](Screenshothome2.png)
+![Detail page](ScreenshotMovie.png)
+![Auth page](ScreenshotAuth.png)
 
 ---
 
