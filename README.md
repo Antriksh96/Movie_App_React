@@ -64,3 +64,42 @@ cd ReactFlix
 
 # Install dependencies
 npm install
+
+🔑 Environment Variables
+
+Create a .env file in the root directory and add:
+
+VITE_TMDB_API_KEY=your_tmdb_api_key_here
+
+npm run dev
+
+📌 Purpose of the Project
+
+This project was created to:
+
+Practice React.js concepts
+
+Work with real APIs
+
+Implement authentication properly
+
+Improve UI/UX using animations
+
+Build a production-level React app
+
+🚧 Future Improvements
+
+Add user profiles
+
+Add movie watchlist
+
+Dark mode support
+
+Better recommendation system
+
+⭐ Show Support
+
+If you like this project or found it helpful,
+please ⭐ star the repository on GitHub — it really helps!
+
+👨‍💻 Built with ❤️ for learning React
