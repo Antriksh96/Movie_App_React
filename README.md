@@ -1,4 +1,4 @@
-# 🎬 ReactFlix
+ # 🎬 ReactFlix
 
 **ReactFlix** is a modern **movie web application** built as part of my React.js practice.  
 It uses **Firebase Authentication** and **TMDB APIs** to provide real movie data, trailers, and a smooth user experience with animations and sliders.
@@ -53,8 +53,6 @@ https://movie-app-react-lac.vercel.app
 
 ## 🛠️ Installation & Setup
 
-Follow these steps to run the project locally:
-
 ```bash
 # Clone the repository
 git clone https://github.com/your-username/ReactFlix.git
@@ -63,43 +61,4 @@ git clone https://github.com/your-username/ReactFlix.git
 cd ReactFlix
 
 # Install dependencies
-npm install
-
-🔑 Environment Variables
-
-Create a .env file in the root directory and add:
-
-VITE_TMDB_API_KEY=your_tmdb_api_key_here
-
-npm run dev
-
-📌 Purpose of the Project
-
-This project was created to:
-
-Practice React.js concepts
-
-Work with real APIs
-
-Implement authentication properly
-
-Improve UI/UX using animations
-
-Build a production-level React app
-
-🚧 Future Improvements
-
-Add user profiles
-
-Add movie watchlist
-
-Dark mode support
-
-Better recommendation system
-
-⭐ Show Support
-
-If you like this project or found it helpful,
-please ⭐ star the repository on GitHub — it really helps!
-
-👨‍💻 Built with ❤️ for learning React
+npm install 
