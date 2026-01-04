@@ -54,7 +54,7 @@ async function login(email, password) {
 }
 
 const actionCodeSettings = {
-  url: "https://movie-app-react-lac.vercel.app/Newpasspage",
+  url: "https://movie-app-react-lac.vercel.app/reset-password",
   handleCodeInApp: true,
 }
 

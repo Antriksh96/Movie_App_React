@@ -45,7 +45,7 @@ function App() {
         <Route path='/player' element={<Player />} />
         <Route path='/loginpage' element={<Loginpage />} />
         <Route path='/Resetemail' element={<ResetEmailPage />} /> 
-        <Route path='/Newpasspage' element={<Newpasswordpage />} />  
+        <Route path='/reset-password' element={<Newpasswordpage />} />  
       </Routes>
     </>
   );
