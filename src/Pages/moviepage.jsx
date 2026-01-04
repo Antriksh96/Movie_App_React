@@ -111,7 +111,7 @@ function Moviepage() {
                         </p>
 
                         {/* Trailer Button */}
-                        <button onClick={() => { navigate('/player', { state: state?.id }) }} className="float-left flex items-center gap-3 cursor-pointer text-xl hover:opacity-80">
+                        <button onClick={() => { navigate('/player', { state: state?.id }) }} className="float-left flex items-center gap-3 cursor-pointer text-xl hover:opacity-80 z-100 sm:absolute sm:top-[-40px] sm:right-[-53vw]">
                             <i className="clreffect float-left" class="ri-play-large-line"></i>
                             Watch Trailer
                         </button>

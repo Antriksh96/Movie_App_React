@@ -52,11 +52,15 @@ async function login(email, password) {
     alert(error.message);
   }
 }
+
+const actionCodeSettings = {
+  url: "https://movie-app-react-lac.vercel.app/Resetemail",
+  handleCodeInApp: true,
+}
+
 async function ResetEmail(email) {
   try {
-    await sendPasswordResetEmail(auth, email, {
-      url: "http://localhost:5173/Newpasspage",
-    });
+    await sendPasswordResetEmail(auth, email, actionCodeSettings);
     alert("Reset Password email link is sent");
   } catch (err) {
     alert(err.message);
