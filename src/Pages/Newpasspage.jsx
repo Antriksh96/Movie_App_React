@@ -12,13 +12,20 @@ function Newpasswordpage() {
 
 
     const handleReset = async () => {
+        if(!oobCode){
+             alert("Invalid or expired reset link");
+             return;
+        }
+        if(newpass.length < 6){
+            alert('Password must be at least 6 letters');
+        }
         try {
             await confirmPasswordReset(auth, oobCode, newpass)
             alert("Password updated successfully");
             navigate('/loginpage')
 
         } catch (error) {
-            alert("Error")
+            alert(error.message);
         }
     }
 
