@@ -9,7 +9,7 @@ function ResetEmailPage() {
     const user_auth = (event) => {
 
         event.preventDefault(); 
-        ResetEmail(email)
+        ResetEmail(email);
     }
 
     return (
